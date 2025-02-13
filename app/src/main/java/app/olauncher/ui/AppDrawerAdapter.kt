@@ -158,7 +158,11 @@ class AppDrawerAdapter(
                 appHideLayout.visibility = View.GONE
                 renameLayout.visibility = View.GONE
                 appTitle.visibility = View.VISIBLE
+               val packageManager = root.context.packageManager
+                val appIcon = packageManager.getApplicationIcon(appModel.appPackage)
+                appIconView.setImageDrawable(appIcon)
                 appTitle.text = appModel.appLabel + if (appModel.isNew == true) " ✦" else ""
+
                 appTitle.gravity = appLabelGravity
                 otherProfileIndicator.isVisible = appModel.user != myUserHandle
 
